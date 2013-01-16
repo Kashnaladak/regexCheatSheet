@@ -1,0 +1,49 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+* {
+    font-family: Inconsolata, sans-serif;
+    font-size: large;
+}
+
+em {
+    font-style: normal;
+    font-weight: bold;
+}
+
+td:nth-child(2) em {
+    color: #638C04;
+}
+
+td:nth-child(3) em {
+    color: #097887;
+}
+
+sup {
+    color: #888;
+}
+
+.center {
+    text-align: center;
+}
+
+.cheatsheet td:nth-child(1) {
+    color: #AA0000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

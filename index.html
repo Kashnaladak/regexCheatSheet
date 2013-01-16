@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Regex Cheat Sheet</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="container">
+
+            <div class="row">
+                <div class="span12 center">
+                    <h1>Regex Cheat Sheet</h1>
+                </div>
+            </div>
+
+            <table class="table table-hover cheatsheet">
+                <thead>
+                    <tr>
+                        <th>Pattern</th>
+                        <th>Matches</th>
+                        <th>Rule</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- =================== Characters =================== -->
+
+                    <tr>
+                        <td>X</td>
+                        <td><em>X</em></td>
+                        <td>Any character except <em>[\^$.|?*+()</em></td>
+                    </tr>
+                    <tr>
+                        <td>XY</td>
+                        <td><em>XY</em></td>
+                        <td>Any character except <em>[\^$.|?*+()</em> </td>
+                    </tr>
+                    <tr>
+                        <td>\+</td>
+                        <td><em>+</em></td>
+                        <td><em>\</em> followed by a special character: <em>[\^$.|?*+(){}</em></td>
+                    </tr>
+                    <tr>
+                        <td>\n</td>
+                        <td><em>\n</em> <sup>(line feed)</sup></td>
+                        <td>Any character except <em>[\^$.|?*+()</em></td>
+                    </tr>
+                    <tr>
+                        <td>\xE7</td>
+                        <td><em>ç</em></td>
+                        <td>Any <em>hexadecimal</em> represented character</td>
+                    </tr>
+                    <tr>
+                        <td>\u20AC</td>
+                        <td><em>€</em></td>
+                        <td>Any <em>unicode</em> represented character</td>
+                    </tr>
+
+                    <!-- =================== Character Classes =================== -->
+
+                    <tr>
+                        <td>int [ij]</td>
+                        <td><em>int i</em> or <em>int j</em></td>
+                        <td>Any single character within the character class <em>[..]</em></td>
+                    </tr>
+                    <tr>
+                        <td>int [^b]</td>
+                        <td><em>int a</em>, <em>int c</em>, <em>int d</em>, ..</td>
+                        <td>Any single character not in the character class <em>[^..]</em></td>
+                    </tr>
+                    <tr>
+                        <td>int i = [0-9]</td>
+                        <td><em>int i = 0</em>, .., <em>int i = 9</em></td>
+                        <td>Any character in the character class range <em>[..-..]</em></td>
+                    </tr>
+                    <tr>
+                        <td>int [a-c[x-z]]</td>
+                        <td><em>int a</em>, .., <em>int c</em>, <em>int x</em>, .., <em>int z</em></td>
+                        <td>Any character in the union of the classes <em>[..[..]]</em></td>
+                    </tr>
+                    <tr>
+                        <td>int [a-e&&[^c]]</td>
+                        <td><em>int a</em>, <em>int b</em>, <em>int d</em>, <em>int e</em></td>
+                        <td>Any character in the intersection of the classes <em>[..&&[..]]</em></td>
+                    </tr>
+                    <tr>
+                        <td>\d</td>
+                        <td><em>0</em>, <em>1</em>, .., <em>9</em></td>
+                        <td>Any character that belongs to the <em>digit</em> character class</td>
+                    </tr>
+                    <tr>
+                        <td>\p{Digit}</td>
+                        <td><em>0</em>, <em>1</em>, .., <em>9</em></td>
+                        <td>Any character that belongs to the <em>digit</em> character class</td>
+                    </tr>
+                    <tr>
+                        <td>\p{InGreek}</td>
+                        <td><em>Ͱ</em>,<em>ͱ</em>,<em>Ͳ</em>,<em>ͳ</em>,..,<em>Ͼ</em>,<em>Ͽ</em></td>
+                        <td>Any character in the "Greek" <em>unicode page</em>.</td>
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>...</td>
+                        <td><em>Any</em> character except \n</td>
+                    </tr>
+                    <tr>
+                        <td>A|B</td>
+                        <td>A or B</td>
+                        <td>Either expression to the side of the |, but not both</td>
+                    </tr>
+                    <tr>
+                        <td>^</td>
+                        <td></td>
+                        <td><em>Start</em> of a line</td>
+                    </tr>
+                    <tr>
+                        <td>$</td>
+                        <td></td>
+                        <td><em>End</em> of a line</td>
+                    </tr>
+                    <tr>
+                        <td>\b</td>
+                        <td></td>
+                        <td>Either the <em>beginning or end</em> of a word</td>
+                    </tr>
+                    <tr>
+                        <td>\A</td>
+                        <td></td>
+                        <td><em>Beginning</em> of an input</td>
+                    </tr>
+                    <tr>
+                        <td>\z</td>
+                        <td></td>
+                        <td><em>End</em> of an input</td>
+                    </tr>
+                    <tr>
+                        <td>a*</td>
+                        <td><em>aaaaa</em>...</td>
+                        <td>Any character, <em>zero or more times</em></td>
+                    </tr>
+                    <tr>
+                        <td>a+</td>
+                        <td><em>aaaaa</em>...</td>
+                        <td>Any character, <em>one or more times</em></td>
+                    </tr>
+                    <tr>
+                        <td>a?</td>
+                        <td><em>a</em></td>
+                        <td>Any character, <em>zero or one time</em></td>
+                    </tr>
+                    <tr>
+                        <td>a{1,3}</td>
+                        <td><em>a</em>, <em>aa</em>, <em>aaa</em></td>
+                        <td>Any character, <em>at least 'n' times and at most 'm' times</em></td>
+                    </tr>
+                    <tr>
+                        <td>a{2,}</td>
+                        <td><em>aa</em>, <em>aaa</em>, <em>aaaa</em>, ..</td>
+                        <td>Any character, <em>at least 'n' times</em></td>
+                    </tr>
+                    <tr>
+                        <td>a{5}</td>
+                        <td><em>aaaaa</em></td>
+                        <td>Any character, <em>exactly 'n' times</em></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;some quantifier&gt;?</td>
+                        <td></td>
+                        <td>Reluctant modifier, <em>tries to match as little as possible</em></td>
+                    </tr>
+                    <tr>
+                        <td>&lt;some quantifier&gt;+</td>
+                        <td></td>
+                        <td>Possessive modifier, <em>never tracks back</em></td>
+                    </tr>
+                    <tr>
+                        <td>\QhelloWorld();\E</td>
+                        <td><em>helloWorld();</em></td>
+                        <td>Pattern <em>quoting</em></td>
+                    </tr>
+                    <tr>
+                        <td>(a)b</td>
+                        <td><em>ab</em></td>
+                        <td><em>Capturing group</em> on a section of the pattern</td>
+                    </tr>
+                    <tr>
+                        <td>(?:a)b</td>
+                        <td><em>ab</em></td>
+                        <td><em>Non-capturing group</em> on a section of the pattern</td>
+                    </tr>
+                    <tr>
+                        <td>(?idm-sux)</td>
+                        <td></td>
+                        <td>Activating/deactivating <em>flags</em></td>
+                    </tr>
+                    <tr>
+                        <td>(?=X)Y</td>
+                        <td><em>Y</em></td>
+                        <td>Y, so long as X is <em>true</em> in Y</td>
+                    </tr>
+                    <tr>
+                        <td>(?!X)Y</td>
+                        <td><em>Y</em></td>
+                        <td>Y, so long as X is <em>false</em> in Y</td>
+                    </tr>
+                    <tr>
+                        <td>(?&lt;=X)Y</td>
+                        <td><em>Y</em></td>
+                        <td>Y, so long as X <em>occurs before</em> Y</td>
+                    </tr>
+                    <tr>
+                        <td>(?&lt;!X)Y</td>
+                        <td></td>
+                        <td>Y, so long as X <em>doesn't occur before</em> Y</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div> <!-- /container -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
